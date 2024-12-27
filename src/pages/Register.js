@@ -10,7 +10,7 @@ function Register() {
   const navigate= useNavigate();
 
 
-  function handleSumbit() {
+  function handleSubmit() {
     console.log(email, password);
     axios
       .post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDiKk-mrBqfRj8QvsiDKPN3NESGpNCNPwc`, { email,password })
@@ -22,8 +22,9 @@ function Register() {
       .catch((err) => console.log(err));
   }
   return (
-    <div  className='container p-5 col-md-4' >
-    <h2 className='text-center mb-4'>Register</h2>
+    <div  className="container d-flex justify-content-center align-items-center vh-100" >
+    <div className="card p-4 col-md-6 col-lg-4 shadow">
+    <h2 className='text-center mb-4' style={{ color: '#0A5EB0' }}>Register</h2>
     <div className="mb-4">
   <label htmlFor="exampleFormControlInput1"
    className="form-label">Email address</label>
@@ -42,9 +43,10 @@ function Register() {
    className="form-control"
     id="exampleFormControlInput1" />
 </div>
-<button className="btn btn-primary" onClick={handleSumbit}>
+<button className="btn btn-primary" onClick={handleSubmit}>
         Submit
       </button>
+      </div>
 </div>
   )
 }

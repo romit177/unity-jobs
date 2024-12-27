@@ -1,0 +1,137 @@
+.body1{
+  margin: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  background-color: #f0f0f0; 
+}
+.heder{
+    height: 700px;
+    width: 886px;
+   
+  }
+  .heder1{
+    height: 306px;
+    width: 884px;
+  }
+
+  .nam{
+    margin-left: -60px;
+  }
+  .name4{
+    margin-top: -140px;
+    margin-left: 600px;
+  }
+  
+  .name5{
+    margin-top: -140px;
+    margin-left: 850px;
+  }
+
+     .boxes{
+      margin-top: 400px;
+      border: 2px solid black;
+     }
+     .box7{
+      height: 150px;
+      width: 880px;
+      margin: 0 auto;
+      background-color: #f9f9f9;
+      border: 2px solid black;
+      border-radius: 8px;
+  
+     }
+     .box7 > h2{
+      color:black;
+      font-size: 25px;
+      margin-bottom: 10px;
+      
+     }
+     .experience-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .company-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }    
+
+.experience-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color:black;
+}
+.experience-details p {
+  margin: 0;
+  color: black;
+}
+.add-button,
+.edit-button {
+  background-color:white;
+  color:black;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+.btn4{
+  margin-right: 200px;
+}
+.education-section{
+      height: 155px;
+      width: 880px;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      border: 2px solid black;
+      border-radius: 8px;
+    
+  
+}
+.skills-section > h2{
+  font-size: 25px;
+}
+.education-section > h2{
+  font-size: 25px;
+}
+.skills-section{
+  height: 155px;
+  width: 880px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+.body2{
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.body2 > h2{
+  color:#074799;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+.submit-button {
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}

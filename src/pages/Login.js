@@ -16,14 +16,15 @@ function Login() {
       .post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDiKk-mrBqfRj8QvsiDKPN3NESGpNCNPwc`, { email,password })
       .then((res) => {
        localStorage.setItem("token",res.data.idToken)
-       navigate("/")
+       navigate("/creatprofile")
       })
       .catch((err) => console.log(err));
   }
 
   return (
-    <div  className='container p-5 col-md-4' >
-    <h2 className='text-center mb-4'>Login</h2>
+    <div  className='container d-flex justify-content-center align-items-center vh-100'>
+    <div className="card p-4 col-md-6 col-lg-4 shadow">
+    <h2 className='text-center mb-4' style={{ color: '#0A5EB0' }}>Login</h2>
     <div className="mb-4">
   <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
   <input type="email" className="form-control"
@@ -42,6 +43,7 @@ function Login() {
 <button className="btn btn-primary" onClick={handleSumbit}>
         Submit
       </button>
+      </div>
 </div>
 
   )
