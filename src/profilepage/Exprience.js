@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 function Exprience() {
     const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
@@ -101,13 +101,14 @@ function Exprience() {
           rows={4}
         />
         <br />
-
-        <button type="submit" className="submit-button">
+      
+        <button type="submit" as={Link} to="/profile" className="submit-button">
           Save Education
         </button>
+        
       </form>
     </div>
   )
 }
 
-export default Exprience
+export default Exprience;

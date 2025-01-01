@@ -1,9 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+
 
 function ProfilePage() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [user, setUser] = useState(null);
+  const [educationList, setEducationList] = useState([]);
 
   useEffect(() => {
     // Retrieve user data from localStorage
@@ -11,22 +20,18 @@ function ProfilePage() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    const storedEducation = JSON.parse(localStorage.getItem("education")) || [];
+    setEducationList(storedEducation);
   }, []);
 
   if (!user) {
     return <p>Loading profile...</p>;
   }
+
+  
   return (
 
-  //   <div className="container col-md-6 border border-black p-5 rounded">
-  //   <h2 className="text-center mb-4" style={{ color: '#0A5EB0' }}>Profile</h2>
-  //   <p><strong>First Name:</strong> {user.Firstname}</p>
-  //   <p><strong>Last Name:</strong> {user.Lastname}</p>
-  //   <p><strong>Username:</strong> {user.Username}</p>
-  //   <p><strong>Email:</strong> {user.Emailaddress}</p>
-  //   <p><strong>Gender:</strong> {user.Gender}</p>
-  //   <p><strong>City:</strong> {user.City}</p>
-  // </div>
+
 <div className='body1'>
   <div className='heder  border border-black'>
   <div className='heder1 ' style={{ backgroundColor: '#4DA1A9' }}> 
@@ -47,7 +52,70 @@ function ProfilePage() {
           </div> 
 
           <h5 className='name4'>JBS IT INSTITUTE</h5>
-          <p className='name5'><i class="fa-solid fa-pen-to-square"></i></p> 
+          
+          <p className='name5'  onClick={handleShow} ><i class="fa-solid fa-pen-to-square"></i></p> 
+          
+       
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Upadate Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Firstname</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Firstname"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Lastname</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Lastname"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="username"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="City"
+                autoFocus
+              />
+            </Form.Group>
+          
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+              />
+            </Form.Group>
+          
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+ 
  </div>
   
   <div className='boxes'>
@@ -85,12 +153,11 @@ function ProfilePage() {
 
           <div className="box7">
         <h2 className="ms-5 mt-3" >Experience</h2>
-        <div className="btn4">
-        <button className="edit-button" ><i class="fa-solid fa-pen-to-square"></i></button>
-        
-        <button className="add-button"  > <i class="fa-solid fa-plus"></i></button>
+    
+        <p className='add'><i class=" fa-solid fa-pen-to-square"></i></p>
+        <p className='add2'><i class="fa-solid fa-plus"></i></p>
        
-        </div>
+        
         <div className="experience-item">
           <img
             src="https://yt3.googleusercontent.com/TqLqJrvIUOyeyROP5AVYoE6f9ufJjiWLSFxa6piENwAl7TGaKu-YLdBqJNHCa9I1_yrenLkARkc=s900-c-k-c0x00ffffff-no-rj" // Placeholder image
@@ -103,27 +170,32 @@ function ProfilePage() {
           </div>
         </div>
       </div>
-      <div className="education-section">
-        <h2 className="ms-5 mt-3">
-          Education 
-        </h2>
-        <div className="education-item">
-          <p className="ms-5 mt-3">Show your qualifications and be up to 2X more likely to receive a recruiter InMail</p>
-          <Link className='nav=link-active' to ="/exprience">
-          <button className="btn btn-primary btn-rounded me-3 border-black ms-5  ">Add education</button>
-          </Link>
-        </div>
-      </div>
-      <div className="skills-section ">
-        <h2  className="ms-5 mt-3">
-          Skills 
-        </h2>
-        <p  className="ms-5 mt-3">
-          Communicate your fit for new opportunities – 50% of hirers use skills
-          data to fill their roles
-        </p>
-        <button className="btn btn-primary btn-rounded me-3 border-black ms-5">➕ Add skills</button>
-      </div>
+  <div className="education-section">
+  <h2>Education</h2>
+  {educationList && educationList.length > 0 ? (
+    <ul>
+      {educationList.map((edu, index) => (
+        <li key={index} className="education-item">
+          <h3>{edu.school || "Unknown School"}</h3>
+          <p>
+            {edu.degree || "Unknown Degree"} in {edu.study || "Unknown Field"}
+          </p>
+          <p>
+            {new Date(edu.startDate).toLocaleDateString()} -{" "}
+            {edu.endDate ? new Date(edu.endDate).toLocaleDateString() : "Present"}
+          </p>
+          {edu.description && <p>{edu.description}</p>}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No education added yet.</p>
+  )}
+  <Link to="/add-education">
+    <button className="btn btn-primary">Add Education</button>
+  </Link>
+</div>
+  
  </div>
 </div>
   )

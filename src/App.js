@@ -11,6 +11,7 @@ import Exprience from './profilepage/Exprience';
 
 
 
+
 function App() {
   return (
     <>
@@ -22,8 +23,7 @@ function App() {
     <Route path="/profile" element={<ProfilePage />} />
     <Route path="/creactprofile" element={<CreactProfile />} />
     <Route path="/exprience" element={<Exprience />} />
-
-
+    
 
     </Routes> 
 
